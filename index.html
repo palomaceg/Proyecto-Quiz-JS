@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Proyecto Quiz JS</title>
+</head>
+
+<body>
+
+    <!-- PORTAL BIENVENIDA -->
+    <div class="main-container active" id="welcome-portal">
+        <div class="contenido-superior">
+            <h1>BIienvenid@ al Quiz Musical!!</h1>
+            <p> ♫ Prepárate para adivinar canciones, desafiar tus oídos y demostrar que la música corre por tus venas ♬
+            </p>
+            <p>¡Dale play y que empiece la fiesta!</p>
+            <div class="buttons" id="play-button">▶︎ PLAY</div>
+        </div>
+        <div class="Imagen-container">
+            <img src="Assets/composition-5.svg" alt="Imagen estilo dibujo de personas">
+        </div>
+    </div>
+
+
+    <!-- PREGUNTAS -->
+    <div class="main-container" id="question-section">
+        <h2 class="question-header"></h2>
+        <div class="question-options"></div>
+        <div class="buttons" id="next-button">⏭︎ SIGUIENTE</div>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div class="main-container" id="results-banner">
+        <div class="contenido-superior">
+
+            <h1>Este es tu resultado!</h1>
+            <div class="global-results"></div>
+            <div class="buttons" id="restart-button">⏏︎ OTRA VEZ!</div>
+        </div>
+        <div class="Imagen-container">
+            <img src="Assets/results.svg" alt="Imagen estilo dibujo de personas">
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -52,6 +52,7 @@ html {
     box-shadow: var(--shadow-elevation-high);
     overflow: hidden;
     display: none;
+    gap: 0px;
 }
 
 .main-container.active {
@@ -103,7 +104,6 @@ p {
     display: flex;
     font-family: 'Finger Paint', sans-serif;
     box-shadow: var(--shadow-elevation-high);
-    margin: 0px;
 }
 
 .buttons:hover {
@@ -147,4 +147,20 @@ p {
 
 .incorrect {
     background-color: red;
+}
+
+#global-results{
+    font-size: 2em;
+}
+
+#chart-button{
+    margin: 0px;
+    width: 100%;
+    background-color: #216E6E;
+    border-style: none;
+    box-shadow: none;
+    color: white;
+    font-size: 1.2em;
+    border-top-left-radius: 5rem ;
+    border-top-right-radius: 5rem;
 }

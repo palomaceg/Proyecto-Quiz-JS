@@ -32,6 +32,8 @@ function goToQuestions() {
 function goToResults() {
     hideView()
     resultsBanner.classList.add('active')
+    const score = localStorage.getItem('totalScore')
+    globalResults.innerHTML = `Tus respuestas correctas han sido <b><big>${score}</big></b> sobre <big>10</big>`
 }
 
 function goToWelcomePortal() {
@@ -117,10 +119,13 @@ function showAnswers(element) {
    })
 }
 
+//Almacenamiento de respuestas correctas en Local Storage 
+
 function resultsCalculation () {
     let totalScore = totalCorrectAnswers.length
-    return totalScore
-}
+    localStorage.totalScore = totalScore
+} 
+
 
 //EVENTOS
 

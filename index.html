@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
         <div class="Image-container">
             <img src="Assets/composition-5.svg" alt="Imagen estilo dibujo de personas">
         </div>
-        <button id="chart-button"> 📈 Revisa resultados anteriores</button>
+        <button class="bottom-button" id="chart-button"> 📈 Revisa tu último resultado</button>
     </div>
 
 
@@ -49,11 +49,19 @@
         </div>
     </div>
 
-        <!-- GRÁFICAS -->
+    <!-- GRÁFICAS -->
+    <div class="main-container" id="chart-page">
+        <h1>Estos son los resultados de tu último quiz</h1>
+        <div id="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <button class="bottom-button" id="home-button"> Volver al home</button>
+    </div>
+
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
 </body>
 
 </html>
-

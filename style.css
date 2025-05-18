@@ -93,6 +93,8 @@ p {
 .Image-container img {
     height: 200px;
     margin: 0px;
+    display: flex;
+    align-items: end;
 }
 
 .buttons {
@@ -153,7 +155,7 @@ p {
     font-size: 2em;
 }
 
-#chart-button{
+.bottom-button {
     margin: 0px;
     width: 100%;
     background-color: #216E6E;
@@ -163,4 +165,17 @@ p {
     font-size: 1.2em;
     border-top-left-radius: 5rem ;
     border-top-right-radius: 5rem;
+    margin-top: auto;
+}
+
+.bottom-button:hover{
+    background-color: #6D2121;
+}
+
+#chart-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 80%;
 }

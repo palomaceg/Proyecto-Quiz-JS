@@ -6,28 +6,29 @@
 }
 
 :root {
-  --shadow-color: 0deg 72% 14%;
-  --shadow-elevation-low:
-    -0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.34),
-    -0.1px 0.2px 0.3px -1.2px hsl(var(--shadow-color) / 0.34),
-    -0.3px 0.6px 0.8px -2.5px hsl(var(--shadow-color) / 0.34);
-  --shadow-elevation-medium:
-    -0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.36),
-    -0.3px 0.5px 0.7px -0.8px hsl(var(--shadow-color) / 0.36),
-    -0.7px 1.2px 1.6px -1.7px hsl(var(--shadow-color) / 0.36),
-    -1.6px 2.8px 3.6px -2.5px hsl(var(--shadow-color) / 0.36);
-  --shadow-elevation-high:
-    -0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.34),
-    -0.5px 0.8px 1.1px -0.4px hsl(var(--shadow-color) / 0.34),
-    -0.9px 1.5px 2px -0.7px hsl(var(--shadow-color) / 0.34),
-    -1.4px 2.5px 3.2px -1.1px hsl(var(--shadow-color) / 0.34),
-    -2.3px 4px 5.2px -1.4px hsl(var(--shadow-color) / 0.34),
-    -3.6px 6.3px 8.2px -1.8px hsl(var(--shadow-color) / 0.34),
-    -5.5px 9.6px 12.4px -2.1px hsl(var(--shadow-color) / 0.34),
-    -8px 14.2px 18.3px -2.5px hsl(var(--shadow-color) / 0.34);
+    --shadow-color: 0deg 72% 14%;
+    --shadow-elevation-low:
+        -0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.34),
+        -0.1px 0.2px 0.3px -1.2px hsl(var(--shadow-color) / 0.34),
+        -0.3px 0.6px 0.8px -2.5px hsl(var(--shadow-color) / 0.34);
+    --shadow-elevation-medium:
+        -0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.36),
+        -0.3px 0.5px 0.7px -0.8px hsl(var(--shadow-color) / 0.36),
+        -0.7px 1.2px 1.6px -1.7px hsl(var(--shadow-color) / 0.36),
+        -1.6px 2.8px 3.6px -2.5px hsl(var(--shadow-color) / 0.36);
+    --shadow-elevation-high:
+        -0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.34),
+        -0.5px 0.8px 1.1px -0.4px hsl(var(--shadow-color) / 0.34),
+        -0.9px 1.5px 2px -0.7px hsl(var(--shadow-color) / 0.34),
+        -1.4px 2.5px 3.2px -1.1px hsl(var(--shadow-color) / 0.34),
+        -2.3px 4px 5.2px -1.4px hsl(var(--shadow-color) / 0.34),
+        -3.6px 6.3px 8.2px -1.8px hsl(var(--shadow-color) / 0.34),
+        -5.5px 9.6px 12.4px -2.1px hsl(var(--shadow-color) / 0.34),
+        -8px 14.2px 18.3px -2.5px hsl(var(--shadow-color) / 0.34);
 }
 
-body, html {
+body,
+html {
     background-color: #6D2121;
     background-image: url(Assets/bground.svg);
     height: 100vh;
@@ -48,13 +49,13 @@ body, html {
     align-items: center;
     border-radius: 2rem;
     color: #6D2121;
-    box-shadow: var(--shadow-elevation-high) ;
+    box-shadow: var(--shadow-elevation-high);
     overflow: hidden;
     display: none;
 }
 
 .main-container.active {
-     display: flex;
+    display: flex;
 }
 
 .contenido-superior {
@@ -70,7 +71,7 @@ body, html {
 
 h1 {
     font-size: 2.5em;
-    font-family: 'Finger Paint',  sans-serif;
+    font-family: 'Finger Paint', sans-serif;
     text-align: center;
     line-height: 1.2;
 }
@@ -82,13 +83,13 @@ p {
     line-height: 1.2;
 }
 
-.Imagen-container {
+.Image-container {
     margin-top: auto;
     padding: 0px;
     align-self: center;
 }
 
-.Imagen-container img{
+.Image-container img {
     height: 200px;
     margin: 0px;
 }
@@ -100,7 +101,7 @@ p {
     padding: 1rem 2rem;
     margin: 10px 0px;
     display: flex;
-    font-family: 'Finger Paint',  sans-serif;
+    font-family: 'Finger Paint', sans-serif;
     box-shadow: var(--shadow-elevation-high);
     margin: 0px;
 }
@@ -110,4 +111,40 @@ p {
     box-shadow: var(--shadow-elevation-high);
 }
 
+#options-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    flex: 1;
+    gap: 10px;
+}
 
+#question-header {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#next-button {
+    margin-bottom: 30px;
+}
+
+.option-button {
+    background-color: pink;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    margin: 10px 0px;
+    font-family: 'Finger Paint', sans-serif;
+    box-shadow: var(--shadow-elevation-medium);
+    margin: 0px;
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}

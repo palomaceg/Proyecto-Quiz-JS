@@ -4,6 +4,19 @@ const resultsBanner = document.getElementById("results-banner")
 const startButton = document.getElementById('play-button')
 const nextButton = document.getElementById('next-button')
 const restartButton = document.getElementById('restart-button')
+const questionHeader = document.getElementById('question-header')
+const questionOption = document.getElementById('options-container')
+const globalResults = document.getElementById('global-results')
+
+const apiUrl = 'https://opentdb.com/api.php?amount=10&category=12&type=multiple'
+let currentQuestion = 0
+let allQuestionsAnswers = []
+let totalCorrectAnswers = []
+let totalIncorrectAnswers = []
+
+//FUNCIONES
+
+//para esconder/mostrar vistas  y para "ir" a las vistas
 
 function hideView() {
     welcomePortal.classList.remove('active')
@@ -26,16 +39,107 @@ function goToWelcomePortal() {
     welcomePortal.classList.add('active')
 }
 
+//para 'traducir' los caracteres extraños de la API
 
-startButton.addEventListener('click', goToQuestions)
-nextButton.addEventListener('click', goToResults)
-restartButton.addEventListener('click', goToWelcomePortal)
+function decodeHTMLEntities(text) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/html');
+    return doc.documentElement.textContent;
+}
 
-const preguntas = []
+//para llamar y mostrar las preguntas de un array de 10 preguntas
+//al mismo tiempo se llama a las respuestas y se almacena todo en un objeto de 3 claves (pregunta, respuesta incorrecta y respuesta correcta)
 
-axios.get('https://opentdb.com/api.php?amount=10&category=12&type=multiple')
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
+const getApiInfo = async (e) => {
+    try {
+        const allAPI = await axios.get(apiUrl)
+        const arrayAPI = allAPI.data.results
+
+        allQuestionsAnswers = arrayAPI.map((element) => {
+            return {
+                question: element.question,
+                correctAnswer: element.correct_answer,
+                incorrectAnswers: element.incorrect_answers
+            }
+        })
+        showQuestion()
+
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+function showQuestion() {
+    if (currentQuestion < allQuestionsAnswers.length) {
+        const quest = allQuestionsAnswers[currentQuestion]
+        questionHeader.innerText = decodeHTMLEntities(quest.question)
+
+        showAnswers(quest)
+
+        if (currentQuestion === allQuestionsAnswers.length - 1) {
+            nextButton.innerText = '⏹︎ REVISAR RESULTADOS'
+        } else {
+            nextButton.innerText = '⏭︎ SIGUIENTE'
+        }
+    } else {
+        goToResults()
+    }
+}
+
+function showAnswers(element) {
+    const options = [...element.incorrectAnswers, element.correctAnswer]
+    const mixOptions = options.sort(() => Math.random() - 0.5)
+
+    questionOption.innerText = ' '
+
+    //para reordenar de forma aleatoria el array formado de respuestas correctas e incorrectas
+    mixOptions.forEach(item => {
+        const btn = document.createElement('button')
+        btn.classList.add('option-button')
+        btn.innerText = decodeHTMLEntities(item)
+ 
+
+    //evento de escuchar el click de los botones para evaluar la respuesta
+    btn.addEventListener('click', () => {
+        const allButtons = document.querySelectorAll('.option-button')
+    
+
+    //para evaluar si la respuesta es correcta o incorrecta y almacenarlo en un array vacío para luego hacer el recuento final
+    if (item === element.correctAnswer) {
+        totalCorrectAnswers.push(currentQuestion)
+        btn.classList.add('correct')
+    } else {
+        totalIncorrectAnswers.push(currentQuestion)
+        btn.classList.add('incorrect')
+    }
+})
+    questionOption.appendChild(btn)
+   })
+}
+
+function resultsCalculation () {
+    let totalScore = totalCorrectAnswers.length
+    return totalScore
+}
+
+//EVENTOS
+
+startButton.addEventListener('click', () => {
+    currentQuestion = 0
+    goToQuestions()
+    getApiInfo()
+})
+nextButton.addEventListener('click', () => {
+    currentQuestion++
+    showQuestion()
+    resultsCalculation()
+})
+restartButton.addEventListener('click', () => {
+    goToWelcomePortal()
+})
+
+
+
 
 
 

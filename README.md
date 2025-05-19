@@ -72,7 +72,7 @@ Este proyecto está desarrollado con:
 
 - **HTML5:** estructura semántica del contenido
 
-- **CSS3:** estilos responsive y diseño visual
+- **CSS3:** estilos y diseño visual
 
 - **JavaScript:** lógica del juego, manejo del DOM y consumo de API
 

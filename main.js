@@ -1,17 +1,25 @@
+//LLAMADAS -> contenedores / elementos
 const welcomePortal = document.getElementById("welcome-portal")
 const questionSection = document.getElementById("question-section")
 const resultsBanner = document.getElementById("results-banner")
 const chartPage = document.getElementById('chart-page')
+const questionHeader = document.getElementById('question-header')
+const questionOption = document.getElementById('options-container')
+const globalResults = document.getElementById('global-results')
+const scoreChart = document.getElementById('myChart')
+const questionNumber = document.getElementById('question-number')
+const audioMP3 = document.getElementById('audio-mp3')
+
+//LLAMADAS -> botones
 const startButton = document.getElementById('play-button')
 const nextButton = document.getElementById('next-button')
 const restartButton = document.getElementById('restart-button')
 const chartButton = document.getElementById('chart-button')
 const homeButton = document.getElementById('home-button')
-const questionHeader = document.getElementById('question-header')
-const questionOption = document.getElementById('options-container')
-const globalResults = document.getElementById('global-results')
-const scoreChart = document.getElementById('myChart')
+const audioButton = document.getElementById('audio-button')
 
+
+//Variables 
 const apiUrl = 'https://opentdb.com/api.php?amount=10&category=12&type=multiple'
 let currentQuestion = 0
 let allQuestionsAnswers = []
@@ -51,6 +59,7 @@ function goToCharts() {
     hideView()
     chartPage.classList.add('active')
 
+    //Gráfica de estadísticas de último juego
     const scoreChart = document.getElementById('myChart')
     let correct = localStorage.getItem('totalScore') || 0
     correct = parseInt(correct)
@@ -70,22 +79,20 @@ function goToCharts() {
                 borderWidth: 0,
                 hoverOffset: 10,
                 spacing: 5,
-                borderRadius: 8               
+                borderRadius: 8
             }]
-        },        
+        },
     });
 }
 
 //para 'traducir' los caracteres extraños de la API
-
 function decodeHTMLEntities(text) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, 'text/html');
     return doc.documentElement.textContent;
 }
 
-//para llamar y mostrar las preguntas de un array de 10 preguntas
-//al mismo tiempo se llama a las respuestas y se almacena todo en un objeto de 3 claves (pregunta, respuesta incorrecta y respuesta correcta)
+//para llamar y mostrar las preguntas de un array de 10 preguntas -> al mismo tiempo se llama a las respuestas y se almacena todo en un objeto de 3 claves (pregunta, respuesta incorrecta y respuesta correcta)
 
 const getApiInfo = async (e) => {
     try {
@@ -110,6 +117,7 @@ function showQuestion() {
     if (currentQuestion < allQuestionsAnswers.length) {
         const quest = allQuestionsAnswers[currentQuestion]
         questionHeader.innerText = decodeHTMLEntities(quest.question)
+        questionNumber.innerText = ` ${currentQuestion + 1} / 10`
 
         showAnswers(quest)
 
@@ -140,6 +148,8 @@ function showAnswers(element) {
         btn.addEventListener('click', () => {
             const allButtons = document.querySelectorAll('.option-button')
 
+            //para deshabilitar los botones una vez se ha clickado en una opción
+            allButtons.forEach(button => button.disabled = true)
 
             //para evaluar si la respuesta es correcta o incorrecta y almacenarlo en un array vacío para luego hacer el recuento final
             if (item === element.correctAnswer) {
@@ -163,7 +173,6 @@ function resultsCalculation() {
     localStorage.totalIncorrect = totalIncorrect
 }
 
-
 //EVENTOS
 
 startButton.addEventListener('click', () => {
@@ -171,11 +180,13 @@ startButton.addEventListener('click', () => {
     goToQuestions()
     getApiInfo()
 })
+
 nextButton.addEventListener('click', () => {
     currentQuestion++
     showQuestion()
     resultsCalculation()
 })
+
 restartButton.addEventListener('click', () => {
     goToWelcomePortal()
 })
@@ -184,6 +195,17 @@ chartButton.addEventListener('click', goToCharts)
 
 homeButton.addEventListener('click', goToWelcomePortal)
 
+//para manejar música
+
+audioButton.addEventListener('click', ()=> {
+    if (audioMP3.paused) {
+        audioMP3.play();
+        audioButton.textContent = '🔊';
+    } else {
+        audioMP3.pause();
+        audioButton.textContent = '🔇'
+    }
+})
 
 
 

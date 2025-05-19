@@ -36,6 +36,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .main-container {
@@ -106,10 +107,16 @@ p {
     display: flex;
     font-family: 'Finger Paint', sans-serif;
     box-shadow: var(--shadow-elevation-high);
+    transition: all 0.2s ease;
 }
 
 .buttons:hover {
     background-color: #216E6E;
+    box-shadow: var(--shadow-elevation-high);
+}
+
+.buttons:active {
+    transform: scale(0.6);
     box-shadow: var(--shadow-elevation-high);
 }
 
@@ -143,6 +150,11 @@ p {
     margin: 0px;
 }
 
+.option-button:active {
+    transform: scale(0.8);
+    box-shadow: var(--shadow-elevation-high);
+}
+
 .correct {
     background-color: green;
 }
@@ -151,7 +163,7 @@ p {
     background-color: red;
 }
 
-#global-results{
+#global-results {
     font-size: 2em;
 }
 
@@ -163,19 +175,41 @@ p {
     box-shadow: none;
     color: white;
     font-size: 1.2em;
-    border-top-left-radius: 5rem ;
+    border-top-left-radius: 5rem;
     border-top-right-radius: 5rem;
     margin-top: auto;
 }
 
-.bottom-button:hover{
+.bottom-button:hover {
     background-color: #6D2121;
 }
 
-#chart-container{
+.bottom-button:active {
+    transform: scale(0.8);
+    box-shadow: var(--shadow-elevation-high);
+}
+
+#chart-container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 80%;
     width: 80%;
+    padding: 20px;
+}
+
+#audio-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 30px;
+    border:#e59701 solid 2px;
+    border-radius: 5rem;
+    background-color: transparent;
+    padding: 5px;
+}
+
+#audio-button:active {
+    transform: scale(0.8);
+    box-shadow: var(--shadow-elevation-high);
 }

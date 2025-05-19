@@ -39,6 +39,20 @@ html {
     position: relative;
 }
 
+h1 {
+    font-size: 2.5em;
+    font-family: 'Finger Paint', sans-serif;
+    text-align: center;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 1.5em;
+    font-weight: 550;
+    text-align: center;
+    line-height: 1.2;
+}
+
 .main-container {
     width: 50%;
     background-color: #e59701;
@@ -69,20 +83,6 @@ html {
     text-align: center;
     width: 100%;
     margin: 0px;
-}
-
-h1 {
-    font-size: 2.5em;
-    font-family: 'Finger Paint', sans-serif;
-    text-align: center;
-    line-height: 1.2;
-}
-
-p {
-    font-size: 1.5em;
-    font-weight: 550;
-    text-align: center;
-    line-height: 1.2;
 }
 
 .Image-container {
@@ -128,7 +128,8 @@ p {
     width: 100%;
     justify-content: center;
     flex: 1;
-    gap: 10px;
+    gap: 20px;
+    align-items: center;
 }
 
 #question-header {
@@ -148,6 +149,7 @@ p {
     font-family: 'Finger Paint', sans-serif;
     box-shadow: var(--shadow-elevation-medium);
     margin: 0px;
+    width: 50%;
 }
 
 .option-button:active {

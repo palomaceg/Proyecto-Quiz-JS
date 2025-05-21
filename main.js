@@ -179,6 +179,7 @@ startButton.addEventListener('click', () => {
     currentQuestion = 0
     goToQuestions()
     getApiInfo()
+    music()
 })
 
 nextButton.addEventListener('click', () => {
@@ -195,9 +196,12 @@ chartButton.addEventListener('click', goToCharts)
 
 homeButton.addEventListener('click', goToWelcomePortal)
 
-//para manejar música
+//EXTRA: para manejar música
 
-audioButton.addEventListener('click', ()=> {
+audioButton.addEventListener('click', music)
+
+
+function music() {
     if (audioMP3.paused) {
         audioMP3.play();
         audioButton.textContent = '🔊';
@@ -205,9 +209,7 @@ audioButton.addEventListener('click', ()=> {
         audioMP3.pause();
         audioButton.textContent = '🔇'
     }
-})
-
-
+}
 
 
 
